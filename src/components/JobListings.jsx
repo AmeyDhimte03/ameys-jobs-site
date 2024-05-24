@@ -4,14 +4,18 @@ import Spinner from './Spinner';
 
 const JobListings = ({ isHome = false }) => {
   const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);// so that we can show spinner when it is loading
 
+  //here we are doing fetch on render
+  //for render while fetching we may use react suspense  
+
+  //this is base way of fetching data from client side component, can be made easier using a react query
   useEffect(() => {
     const fetchJobs = async () => {
-      const apiUrl = isHome ? '/api/jobs?_limit=3' : '/api/jobs';
+      const apiUrl = isHome ? '/requestApiFromBackend/jobs?_limit=3' : '/requestApiFromBackend/jobs';// go check vite.config file to see what replaces the /requestApiFromBackend string
       try {
         const res = await fetch(apiUrl);
-        const data = await res.json();
+        const data = await res.json(); 
         setJobs(data);
       } catch (error) {
         console.log('Error fetching data', error);

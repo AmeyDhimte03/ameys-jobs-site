@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const AddJobPage = ({ addJobSubmit }) => {
+  // a state for every element of the form which is to be filled
   const [title, setTitle] = useState('');
   const [type, setType] = useState('Full-Time');
   const [location, setLocation] = useState('');
@@ -13,9 +14,9 @@ const AddJobPage = ({ addJobSubmit }) => {
   const [contactEmail, setContactEmail] = useState('');
   const [contactPhone, setContactPhone] = useState('');
 
-  const navigate = useNavigate();
+  const navigate = useNavigate();// initializing 
 
-  const submitForm = (e) => {
+  const submitForm = (e) => {// e is the event parameter
     e.preventDefault();
 
     const newJob = {
@@ -36,14 +37,14 @@ const AddJobPage = ({ addJobSubmit }) => {
 
     toast.success('Job Added Successfully');
 
-    return navigate('/jobs');
+    return navigate('/jobs');// after submitting we want to redirect to the jobs page, so for that we are using useNavigate hook
   };
 
   return (
     <section className='bg-indigo-50'>
       <div className='container m-auto max-w-2xl py-24'>
         <div className='bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0'>
-          <form onSubmit={submitForm}>
+          <form onSubmit={submitForm}>{/*go to line 19 where we have defined this function*/}
             <h2 className='text-3xl text-center font-semibold mb-6'>Add Job</h2>
 
             <div className='mb-4'>
@@ -59,7 +60,7 @@ const AddJobPage = ({ addJobSubmit }) => {
                 className='border rounded w-full py-2 px-3'
                 required
                 value={type}
-                onChange={(e) => setType(e.target.value)}
+                onChange={(e) => setType(e.target.value)}// when you connect a state to a piece of input then we need to give the onChange handler, bcoz when u chnage it the state has to update
               >
                 <option value='Full-Time'>Full-Time</option>
                 <option value='Part-Time'>Part-Time</option>

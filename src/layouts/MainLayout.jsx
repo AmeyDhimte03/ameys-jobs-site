@@ -8,7 +8,7 @@ const MainLayout = () => {
     <>
       <Navbar />
       <Outlet />
-      <ToastContainer />
+      <ToastContainer /> {/* postion is absolute in the corner so doesn't matter where we put it*/}
     </>
   );
 };

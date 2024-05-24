@@ -1,8 +1,9 @@
 import { useParams, useLoaderData, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';// for toast notification
 //here we used data loader instead of useEffect state to fetch data
+
 const JobPage = ({ deleteJob }) => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -24,6 +25,7 @@ const JobPage = ({ deleteJob }) => {
 
   return (
     <>
+    {/* back button */}
       <section>
         <div className='container m-auto py-6 px-6'>
           <Link
